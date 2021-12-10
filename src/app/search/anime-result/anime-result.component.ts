@@ -11,15 +11,17 @@ export class AnimeResultComponent implements OnInit {
   
   @Input() anime!: Anime;
   private genres: Array<string> = [];
-  
+  re!: RegExp;
+
   constructor(private _sanitizer: DomSanitizer) { 
   }
 
   ngOnInit(): void {
   }
 
-  cleanURL(url: string): string | null{
-    return this._sanitizer.sanitize(SecurityContext.URL, url);
+  cleanURL(url: string): SafeResourceUrl{
+    this.re = RegExp(/[?]/);
+    return this._sanitizer.bypassSecurityTrustResourceUrl(url.substring(0, url.search(this.re)));
   }
 
   mergeGenres(): Array<string> {
@@ -34,5 +36,9 @@ export class AnimeResultComponent implements OnInit {
 
   getDate(date: string): number{
     return new Date(date).getFullYear();
+  }
+
+  validate(value: any): boolean{
+    return value != undefined ? true : false;
   }
 }
