@@ -21,20 +21,19 @@ export class EpisodesComponent implements OnInit {
     this.activateRoute.queryParamMap;
   }
 
-  getEpisodeById(){
-    if(this.id > 0){
-      this.episodeService.getEpisodeById(this.id).subscribe((episode: Episode) =>{
-        episode.episodes.map(function(obj){
-          let date = new Date(obj.aired);
-          obj.aired = String(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());
-        })
-        this.episode = episode;
-        console.log(this.episode)
+  getEpisodeById(): void{
+    this.episodeService.getEpisodeById(this.id).subscribe((episode: Episode) =>{
+      episode.episodes.map(function(obj){
+        let date = new Date(obj.aired);
+        obj.aired = String(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());
       })
-    }
+      this.episode = episode;
+    })
   }
 
-  showEpisodes(){
-    this.getEpisodeById();
+  showEpisodes(): void{
+    if(this.id > 0){
+      this.getEpisodeById();
+    }
   }
 }

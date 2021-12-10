@@ -22,13 +22,13 @@ export class AnimeComponent implements OnInit {
     this.activateRoute.queryParamMap;
   }
 
-  getAnimeById(){
+  getAnimeById(): void{
     this.animeService.getAnimeById(this.id).subscribe((anime: Anime) => {
       this.anime = anime;
     });
   }
 
-  showAnime(){
+  showAnime(): void{
     if(this.id > 0){
       this.getAnimeById();
       this.activate = true;

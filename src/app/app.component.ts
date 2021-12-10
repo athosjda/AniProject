@@ -12,14 +12,12 @@ export class AppComponent {
   //title = 'aniProject';
   
   anime = {} as Anime;
-  animes: Anime[];
+  animes!: Anime[];
 
-  id: number;
+  id!: number;
 
   constructor(){
-    this.animes = [];
-    this.id = 0;
   }
 
-  ngOnInit(){}
+  ngOnInit(): void{}
 }
