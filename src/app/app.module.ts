@@ -10,6 +10,7 @@ import { EpisodesComponent } from './search/episodes/episodes.component';
 import { NavbarComponent } from './elements/navbar/navbar.component';
 import { AnimeComponent } from './search/anime/anime.component';
 import { AnimeResultComponent } from './search/anime-result/anime-result.component';
+import { CommentsComponent } from './search/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AnimeResultComponent } from './search/anime-result/anime-result.compone
     EpisodesComponent,
     NavbarComponent,
     AnimeComponent,
-    AnimeResultComponent
+    AnimeResultComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

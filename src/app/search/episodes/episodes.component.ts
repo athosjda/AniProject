@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Episode } from 'src/app/models/episode';
-import { AnimeService } from 'src/app/services/anime.service';
 import { EpisodeService } from 'src/app/services/episode.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { EpisodeService } from 'src/app/services/episode.service';
 export class EpisodesComponent implements OnInit {
 
   episode = {} as Episode;
-  id!: number;
+  @Input() id!: number;
 
   constructor(private activateRoute: ActivatedRoute, private episodeService: EpisodeService) {
   }

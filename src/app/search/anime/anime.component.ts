@@ -14,7 +14,7 @@ export class AnimeComponent implements OnInit {
   id!: number;
   activate: boolean;
 
-  constructor(private activateRoute: ActivatedRoute, private animeService: AnimeService, ) {
+  constructor(private activateRoute: ActivatedRoute, private animeService: AnimeService ) {
     this.activate = false;
   }
 
