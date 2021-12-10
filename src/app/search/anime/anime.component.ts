@@ -1,4 +1,4 @@
-import { Component, OnInit, SecurityContext, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Anime } from 'src/app/models/anime';
 import { AnimeService } from 'src/app/services/anime.service';
