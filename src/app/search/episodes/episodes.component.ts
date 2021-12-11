@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Episode } from 'src/app/models/episode';
 import { EpisodeService } from 'src/app/services/episode.service';
 
@@ -13,11 +12,10 @@ export class EpisodesComponent implements OnInit {
   episode = {} as Episode;
   @Input() id!: number;
 
-  constructor(private activateRoute: ActivatedRoute, private episodeService: EpisodeService) {
+  constructor(private episodeService: EpisodeService) {
   }
 
   ngOnInit(): void {
-    this.activateRoute.queryParamMap;
   }
 
   getEpisodeById(): void{

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Anime } from 'src/app/models/anime';
 import { AnimeService } from 'src/app/services/anime.service';
+import { EpisodesComponent } from '../episodes/episodes.component';
 
 @Component({
   selector: 'app-anime',
@@ -10,11 +11,16 @@ import { AnimeService } from 'src/app/services/anime.service';
 })
 export class AnimeComponent implements OnInit {
 
+  @ViewChild(EpisodesComponent) episodesComponent!: EpisodesComponent;
+
   anime = {} as Anime;
   id!: number;
   activate: boolean;
 
-  constructor(private activateRoute: ActivatedRoute, private animeService: AnimeService ) {
+  constructor(
+      private activateRoute: ActivatedRoute,
+      private animeService: AnimeService
+      ){
     this.activate = false;
   }
 
@@ -32,6 +38,7 @@ export class AnimeComponent implements OnInit {
     if(this.id > 0){
       this.getAnimeById();
       this.activate = true;
+      this.episodesComponent.showEpisodes();
     }
   }
 }
