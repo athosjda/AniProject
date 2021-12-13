@@ -16,7 +16,7 @@ export class AnimeComponent implements OnInit {
   anime = {} as Anime;
   id!: number;
   activate: boolean;
-
+  commentButtonView!: boolean;
   constructor(
       private activateRoute: ActivatedRoute,
       private animeService: AnimeService
@@ -39,6 +39,7 @@ export class AnimeComponent implements OnInit {
       this.getAnimeById();
       this.activate = true;
       this.episodesComponent.showEpisodes();
+      this.commentButtonView = true;
     }
   }
 }

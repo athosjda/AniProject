@@ -1,13 +1,44 @@
 <div class="row justify-content-center" *ngIf="buttonView">
     <button (click)="showComentarios()" class="btn btn-primary">Comentários</button>
 </div>
-<div class="row" *ngFor="let review of reviews">
+<div class="row" *ngFor="let review of reviews; index as i">
     <div class="col">
-            <img src="{{review.reviewer.image_url}}" class="img-tam rounded-circle mx-auto d-block">
+        <div class="row">
+            <div class="col-1">
+                <img src="{{review.reviewer.image_url}}" class="img-tam rounded-circle mx-auto d-block">
+            </div>
+            <div class="col">
+                <p class="font-username">{{review.reviewer.username}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <p class="font-score"><span>Eps: {{review.reviewer.episodes_seen}}</span></p>
+            </div>
+            <div class="col">
+                <p class="font-score"><span>overall: {{review.reviewer.scores.overall}}</span></p>
+            </div>
+            <div class="col">
+                <p class="font-score"><span>story: {{review.reviewer.scores.story}}</span></p>
+            </div>
+            <div class="col">
+                <p class="font-score"><span>animation: {{review.reviewer.scores.animation}}</span></p>
+            </div>
+            <div class="col">
+                <p class="font-score"><span>sound: {{review.reviewer.scores.sound}}</span></p>
+            </div>
+            <div class="col">
+                <p class="font-score"><span>character: {{review.reviewer.scores.character}}</span></p>
+            </div>
+            <div class="col">
+                <p class="font-score"><span>enjoyment: {{review.reviewer.scores.enjoyment}}</span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-md-1">
+                <p class="font-content" *ngIf="controlComment[i] == true"><span>{{review.resume}}</span><span class="expand" (click)="controlComments(i)"> ... mais</span></p>
+                <p class="font-content" *ngIf="controlComment[i] == false"><span>{{review.content}}</span><span class="expand" (click)="controlComments(i)"> menos</span></p>
+            </div>
+        </div>
     </div>
-    <div class="col">
-        <p class="h6">{{review.reviewer.username}}</p>
-    </div>
-    <p *ngIf="controlComment == true"><span>{{review.resume}}</span><span (click)="controlComments()"> mais</span></p>
-    <p *ngIf="controlComment == false"><span>{{review.content}}</span><span (click)="controlComments()"> menos</span></p>
 </div>

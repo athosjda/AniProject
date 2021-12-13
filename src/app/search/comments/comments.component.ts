@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { range } from 'rxjs';
 import { Comment } from 'src/app/models/comment';
 import { Review } from 'src/app/models/review';
 import { CommentService } from 'src/app/services/comment.service';
@@ -11,8 +12,8 @@ import { CommentService } from 'src/app/services/comment.service';
 export class CommentsComponent implements OnInit {
 
   @Input() id!: number;
-  controlComment: boolean = true;
-  buttonView: boolean = true;
+  @Input() buttonView: boolean = true;
+  controlComment = [true];
   reviews!: [Review];
   comment!: string;
 
@@ -25,9 +26,10 @@ export class CommentsComponent implements OnInit {
 
   getComments(): void{
     this.commentService.getComments(this.id).subscribe((comment: Comment) => {
+      this.makeControlComments(comment.reviews.length);
       this.reviews = comment.reviews;
       this.reviews.forEach(ele => {
-        ele.resume = ele.content.substring(0, 75)+'...';
+        ele.resume = ele.content.substring(0, 75);
       });
     })
   }
@@ -37,7 +39,13 @@ export class CommentsComponent implements OnInit {
     this.getComments();
   }
 
-  controlComments(): void{
-    this.controlComment = !this.controlComment;
+  makeControlComments(tam: number): void{
+    for(let i = 0; i < tam-1; i++){
+      this.controlComment.push(true)
+    }
   }
+  controlComments(idx: number): void{
+    this.controlComment[idx] = !this.controlComment[idx];
+  }
+
 }

@@ -1,4 +1,24 @@
 .img-tam {
     width: 20px;
     height: 20px;
- }
+}
+
+.font-content{
+    font-size: smaller;
+}
+
+.font-username{
+    font-size: small;
+    font-weight: bold;
+}
+
+.expand {
+    font-weight: bold;
+    color: grey;
+}
+
+.font-score {
+    font-size: xx-small;
+    font-weight: bold;
+    color: grey;
+}
