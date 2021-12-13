@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Episode } from 'src/app/models/episode';
-import { EpisodeService } from 'src/app/services/episode.service';
+import { AnimeService } from 'src/app/services/anime.service';
 
 @Component({
   selector: 'app-episodes',
@@ -12,14 +12,16 @@ export class EpisodesComponent implements OnInit {
   episode = {} as Episode;
   @Input() id!: number;
 
-  constructor(private episodeService: EpisodeService) {
+  constructor(
+    private animeService: AnimeService
+    ) {
   }
 
   ngOnInit(): void {
   }
 
   getEpisodeById(): void{
-    this.episodeService.getEpisodeById(this.id).subscribe((episode: Episode) =>{
+    this.animeService.getEpisodeById(this.id).subscribe((episode: Episode) =>{
       episode.episodes.map(function(obj){
         let date = new Date(obj.aired);
         obj.aired = String(date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear());

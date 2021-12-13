@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from 'src/app/models/comment';
 import { Review } from 'src/app/models/review';
-import { CommentService } from 'src/app/services/comment.service';
+import { AnimeService } from 'src/app/services/anime.service';
 
 @Component({
   selector: 'app-comments',
@@ -18,7 +18,7 @@ export class CommentsComponent implements OnInit {
   comment!: string;
 
   constructor(
-    private commentService: CommentService
+    private animeService: AnimeService
   ){
     this.commentView = false;
     this.buttonView = true;
@@ -28,7 +28,7 @@ export class CommentsComponent implements OnInit {
   }
 
   getComments(): void{
-    this.commentService.getComments(this.id).subscribe((comment: Comment) => {
+    this.animeService.getComments(this.id).subscribe((comment: Comment) => {
       this.makeControlComments(comment.reviews.length);
       this.reviews = comment.reviews;
       this.reviews.forEach(ele => {

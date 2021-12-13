@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 
 import { Anime } from '../models/anime';
+import { Comment } from '../models/comment';
+import { Episode } from '../models/episode';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,20 @@ export class AnimeService {
 
   getAnimeById(id: number): Observable<Anime>{
     return this.httpClient.get<Anime>(this.url+'/'+id).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  getEpisodeById(id: number): Observable<Episode>{
+    return this.httpClient.get<Episode>(this.url+'/'+id+'/episodes').pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  getComments(id: number): Observable<Comment>{
+    return this.httpClient.get<Comment>(this.url+'/'+id+'/reviews').pipe(
       retry(2),
       catchError(this.handleError)
     )
