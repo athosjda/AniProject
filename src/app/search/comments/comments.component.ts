@@ -11,7 +11,8 @@ import { CommentService } from 'src/app/services/comment.service';
 export class CommentsComponent implements OnInit {
 
   @Input() id!: number;
-  activate: boolean = false;
+  controlComment: boolean = true;
+  buttonView: boolean = true;
   reviews!: [Review];
   comment!: string;
 
@@ -26,13 +27,17 @@ export class CommentsComponent implements OnInit {
     this.commentService.getComments(this.id).subscribe((comment: Comment) => {
       this.reviews = comment.reviews;
       this.reviews.forEach(ele => {
-        ele.resume = ele.content.substring(0, 25)+'...';
+        ele.resume = ele.content.substring(0, 75)+'...';
       });
     })
   }
 
   showComentarios(): void{
+    this.buttonView = false;
     this.getComments();
-    this.activate = true;
+  }
+
+  controlComments(): void{
+    this.controlComment = !this.controlComment;
   }
 }

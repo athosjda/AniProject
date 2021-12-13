@@ -1,16 +1,13 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center" *ngIf="buttonView">
     <button (click)="showComentarios()" class="btn btn-primary">Comentários</button>
 </div>
 <div class="row" *ngFor="let review of reviews">
-    <div class="row">
-        <div class="col offset-md-1">
+    <div class="col">
             <img src="{{review.reviewer.image_url}}" class="img-tam rounded-circle mx-auto d-block">
-        </div>
-        <div class="col">
-            <p class="h6">{{review.reviewer.username}}</p>
-        </div>
     </div>
-    <div class="row">
-    <p>{{review.resume}}</p>
+    <div class="col">
+        <p class="h6">{{review.reviewer.username}}</p>
     </div>
+    <p *ngIf="controlComment == true"><span>{{review.resume}}</span><span (click)="controlComments()"> mais</span></p>
+    <p *ngIf="controlComment == false"><span>{{review.content}}</span><span (click)="controlComments()"> menos</span></p>
 </div>
