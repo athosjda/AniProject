@@ -11,6 +11,7 @@ import { NavbarComponent } from './elements/navbar/navbar.component';
 import { AnimeComponent } from './search/anime/anime.component';
 import { AnimeResultComponent } from './search/anime-result/anime-result.component';
 import { CommentsComponent } from './search/comments/comments.component';
+import { MangaComponent } from './search/manga/manga.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommentsComponent } from './search/comments/comments.component';
     NavbarComponent,
     AnimeComponent,
     AnimeResultComponent,
-    CommentsComponent
+    CommentsComponent,
+    MangaComponent
   ],
   imports: [
     BrowserModule,
