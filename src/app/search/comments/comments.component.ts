@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { range } from 'rxjs';
 import { Comment } from 'src/app/models/comment';
 import { Review } from 'src/app/models/review';
 import { CommentService } from 'src/app/services/comment.service';
@@ -12,14 +11,18 @@ import { CommentService } from 'src/app/services/comment.service';
 export class CommentsComponent implements OnInit {
 
   @Input() id!: number;
-  @Input() buttonView: boolean = true;
+  buttonView!: boolean;
+  commentView!: boolean;
   controlComment = [true];
   reviews!: [Review];
   comment!: string;
 
   constructor(
     private commentService: CommentService
-  ){}
+  ){
+    this.commentView = false;
+    this.buttonView = true;
+  }
 
   ngOnInit(): void {
   }
@@ -34,7 +37,13 @@ export class CommentsComponent implements OnInit {
     })
   }
 
+  setButton(){
+    this.buttonView = true;
+    this.commentView = false;
+  }
+
   showComentarios(): void{
+    this.commentView = true;
     this.buttonView = false;
     this.getComments();
   }
@@ -44,8 +53,8 @@ export class CommentsComponent implements OnInit {
       this.controlComment.push(true)
     }
   }
+
   controlComments(idx: number): void{
     this.controlComment[idx] = !this.controlComment[idx];
   }
-
 }

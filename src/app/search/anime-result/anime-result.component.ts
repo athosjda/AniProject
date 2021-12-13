@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, SecurityContext, ViewChild } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl, SafeValue } from '@angular/platform-browser';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Anime } from 'src/app/models/anime';
 
 @Component({

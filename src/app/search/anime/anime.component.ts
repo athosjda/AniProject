@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Anime } from 'src/app/models/anime';
 import { AnimeService } from 'src/app/services/anime.service';
+import { CommentsComponent } from '../comments/comments.component';
 import { EpisodesComponent } from '../episodes/episodes.component';
 
 @Component({
@@ -12,11 +13,11 @@ import { EpisodesComponent } from '../episodes/episodes.component';
 export class AnimeComponent implements OnInit {
 
   @ViewChild(EpisodesComponent) episodesComponent!: EpisodesComponent;
+  @ViewChild(CommentsComponent) commentsComponent!: CommentsComponent;
 
   anime = {} as Anime;
   id!: number;
   activate: boolean;
-  commentButtonView!: boolean;
   constructor(
       private activateRoute: ActivatedRoute,
       private animeService: AnimeService
@@ -39,7 +40,7 @@ export class AnimeComponent implements OnInit {
       this.getAnimeById();
       this.activate = true;
       this.episodesComponent.showEpisodes();
-      this.commentButtonView = true;
+      this.commentsComponent.setButton();
     }
   }
 }

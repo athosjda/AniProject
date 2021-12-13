@@ -1,8 +1,8 @@
 <div class="row justify-content-center" *ngIf="buttonView">
-    <button (click)="showComentarios()" class="btn btn-primary">Comentários</button>
+    <button (click)="showComentarios()" class="btn btn-primary">Reviews</button>
 </div>
 <div class="row" *ngFor="let review of reviews; index as i">
-    <div class="col">
+    <div class="col" *ngIf="commentView">
         <div class="row">
             <div class="col-1">
                 <img src="{{review.reviewer.image_url}}" class="img-tam rounded-circle mx-auto d-block">
@@ -16,22 +16,22 @@
                 <p class="font-score"><span>Eps: {{review.reviewer.episodes_seen}}</span></p>
             </div>
             <div class="col">
-                <p class="font-score"><span>overall: {{review.reviewer.scores.overall}}</span></p>
+                <p class="font-score"><span>Geral: {{review.reviewer.scores.overall}}</span></p>
             </div>
             <div class="col">
-                <p class="font-score"><span>story: {{review.reviewer.scores.story}}</span></p>
+                <p class="font-score"><span>História: {{review.reviewer.scores.story}}</span></p>
             </div>
             <div class="col">
-                <p class="font-score"><span>animation: {{review.reviewer.scores.animation}}</span></p>
+                <p class="font-score"><span>Animação: {{review.reviewer.scores.animation}}</span></p>
             </div>
             <div class="col">
-                <p class="font-score"><span>sound: {{review.reviewer.scores.sound}}</span></p>
+                <p class="font-score"><span>Áudio: {{review.reviewer.scores.sound}}</span></p>
             </div>
             <div class="col">
-                <p class="font-score"><span>character: {{review.reviewer.scores.character}}</span></p>
+                <p class="font-score"><span>Personagens: {{review.reviewer.scores.character}}</span></p>
             </div>
             <div class="col">
-                <p class="font-score"><span>enjoyment: {{review.reviewer.scores.enjoyment}}</span></p>
+                <p class="font-score"><span>Entretenimento: {{review.reviewer.scores.enjoyment}}</span></p>
             </div>
         </div>
         <div class="row">
