@@ -21,7 +21,8 @@ export interface Comment {
                 character: number;
                 enjoyment: number;
             };
-            content: string;
         }
+        content: string;
+        resume: string;
     }]
 }
