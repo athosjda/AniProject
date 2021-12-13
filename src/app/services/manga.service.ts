@@ -8,7 +8,7 @@ import { Manga } from '../models/manga';
 })
 export class MangaService {
 
-  url = 'https://api.jikan.moe/v3/anime';
+  url = 'https://api.jikan.moe/v3/manga';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class MangaService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
-  getAnimeById(id: number): Observable<Manga>{
+  getMangaById(id: number): Observable<Manga>{
     return this.httpClient.get<Manga>(this.url+'/'+id).pipe(
       retry(2),
       catchError(this.handleError)
